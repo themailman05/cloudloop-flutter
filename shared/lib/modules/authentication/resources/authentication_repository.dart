@@ -3,10 +3,8 @@ import 'package:api_sdk/main.dart';
 class AuthenticationRepository {
   Future<dynamic> registerUserWithUsernameAndPassword(
       String username, String email, String password) async {
-    await Future.delayed(Duration(seconds: 1)); // simulate a network delay
     final response = await ApiSdk.registerUser(
         {'username': username, 'email': email, 'password': password});
-
     return response;
   }
 

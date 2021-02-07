@@ -4,6 +4,7 @@ class RestApiHandlerData {
   static ApiBaseHelper _apiBaseHelper = ApiBaseHelper();
   static getData(String path) async {
     final response = await _apiBaseHelper.get('$path');
+    print(response);
     return response;
   }
 

@@ -1,7 +1,7 @@
 library constants;
 
 // Onboarding Screens
-const String app_name = "APP NAME";
+const String app_name = "CloudLoop";
 
 // tabs
 const String tab0 = "Tab 0";
@@ -13,4 +13,4 @@ const String tab3 = "Tab 3";
 const String screen_util = "Screen";
 
 //home
-const String app_bar_title = 'Flutter Starter';
+const String app_bar_title = 'CloudLoop';

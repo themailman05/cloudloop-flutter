@@ -1,21 +1,19 @@
 import 'package:api_sdk/main.dart';
 
 class AuthenticationRepository {
-  Future<dynamic> signUpWithEmailAndPassword(
-      String email, String password) async {
+  Future<dynamic> registerUserWithUsernameAndPassword(
+      String username, String email, String password) async {
     await Future.delayed(Duration(seconds: 1)); // simulate a network delay
-    final response = await ApiSdk.signUpWithEmailAndPassword(
-        {'email': email, 'password': password});
+    final response = await ApiSdk.registerUser(
+        {'username': username, 'email': email, 'password': password});
 
     return response;
   }
 
-  Future<dynamic> loginWithEmailAndPassword(
-      String email, String password) async {
-    await Future.delayed(Duration(seconds: 1)); // simulate a network delay
-    final response = await ApiSdk.loginWithEmailAndPassword(
-        {'email': email, 'password': password});
-
+  Future<dynamic> loginWithUsernameAndPassword(
+      String username, String password) async {
+    final response = await ApiSdk.loginWithUsernameAndPassword(
+        {'username': username, 'password': password});
     return response;
   }
 

@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
         body: BlocListener<AuthenticationBloc, AuthenticationState>(
           cubit: authenticationBloc,
           listener: (BuildContext context, AuthenticationState state) {
-            if (state is AppAutheticated) {
+            if (state is AppAuthenticated) {
               Navigator.pushNamed(context, '/home');
             }
             if (state is AuthenticationStart) {

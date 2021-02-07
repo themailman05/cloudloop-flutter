@@ -11,6 +11,7 @@ class SignUpForm extends StatefulWidget {
 
 class _SignUpFormState extends State<SignUpForm> {
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
+  final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
   final _emailController = TextEditingController();
 
@@ -21,6 +22,22 @@ class _SignUpFormState extends State<SignUpForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
+          TextFormField(
+            decoration: InputDecoration(
+              labelText: 'Username',
+              filled: true,
+              isDense: true,
+            ),
+            controller: _usernameController,
+            keyboardType: TextInputType.text,
+            autocorrect: false,
+            validator: (value) {
+              if (value.isEmpty) {
+                return 'Username is required.';
+              }
+              return null;
+            },
+          ),
           TextFormField(
             decoration: InputDecoration(
               labelText: 'Email address',

@@ -47,7 +47,7 @@ class AuthenticationBloc
       await Future.delayed(Duration(milliseconds: 500)); // a simulated delay
       final SharedPreferences sharedPreferences = await prefs;
       if (sharedPreferences.getString('authtoken') != null) {
-        yield AppAutheticated();
+        yield AppAuthenticated();
       } else {
         yield AuthenticationStart();
       }
@@ -62,15 +62,15 @@ class AuthenticationBloc
     yield AuthenticationLoading();
     try {
       await Future.delayed(Duration(milliseconds: 500)); // a simulated delay
-      final data = await authenticationService.signUpWithEmailAndPassword(
-          event.email, event.password);
+      final data = await authenticationService.registerUserWithUsernameAndPassword(
+          event.username, event.email, event.password);
 
       if (data["error"] == null) {
         final currentUser = UserData.fromJson(data);
         if (currentUser != null) {
           sharedPreferences.setString('authtoken', currentUser.token);
           sharedPreferences.setInt('userId', currentUser.id);
-          yield AppAutheticated();
+          yield AppAuthenticated();
         } else {
           yield AuthenticationNotAuthenticated();
         }
@@ -88,13 +88,13 @@ class AuthenticationBloc
     yield AuthenticationLoading();
     try {
       await Future.delayed(Duration(milliseconds: 500)); // a simulated delay
-      final data = await authenticationService.loginWithEmailAndPassword(
+      final data = await authenticationService.loginWithUsernameAndPassword(
           event.email, event.password);
       if (data["error"] == null) {
         final currentUser = Token.fromJson(data);
         if (currentUser != null) {
           sharedPreferences.setString('authtoken', currentUser.token);
-          yield AppAutheticated();
+          yield AppAuthenticated();
         } else {
           yield AuthenticationNotAuthenticated();
         }

@@ -5,6 +5,7 @@ class AuthenticationRepository {
       String username, String email, String password) async {
     final response = await ApiSdk.registerUser(
         {'username': username, 'email': email, 'password': password});
+    print("Called Registed User");
     return response;
   }
 

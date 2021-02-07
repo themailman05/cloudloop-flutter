@@ -38,6 +38,9 @@ class _SignUpFormState extends State<SignUpForm> {
               return null;
             },
           ),
+          SizedBox(
+            height: 12,
+          ),
           TextFormField(
             decoration: InputDecoration(
               labelText: 'Email address',
